@@ -2,7 +2,9 @@ package com.miniweibo.user.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
 
 import java.util.Date;
 
@@ -10,6 +12,7 @@ import java.util.Date;
  * @author xiaoshun.cxs
  * 2020/8/24
  */
+@Data
 @TableName("`user`")
 public class User {
 
@@ -49,6 +52,7 @@ public class User {
     /**
      * 是否删除
      */
+    @TableLogic
     private Integer isDeleted;
 
 }
