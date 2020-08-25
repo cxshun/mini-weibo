@@ -17,4 +17,12 @@ public interface UserService extends BaseService<User, Long> {
      */
     boolean register(UserInfoBo userInfoBo);
 
+    /**
+     * generate jwt for user
+     * @param uid   user id
+     * @param password user password
+     * @return  jwt
+     */
+    String authenticate(Long uid, String password);
+
 }

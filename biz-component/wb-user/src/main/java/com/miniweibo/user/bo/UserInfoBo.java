@@ -11,6 +11,7 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class UserInfoBo {
 
+    private String nickName;
     private String name;
     private String email;
     private String password;
