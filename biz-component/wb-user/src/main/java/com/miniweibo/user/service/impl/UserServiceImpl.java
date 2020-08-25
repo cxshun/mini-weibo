@@ -10,6 +10,7 @@ import com.miniweibo.user.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -23,6 +24,8 @@ import java.util.Date;
 public class UserServiceImpl extends AbstractServiceImpl<User, Long> implements UserService {
     @Autowired
     private UserMapper userMapper;
+    @Autowired
+    private JwtService jwtService;
 
     @Override
     protected BaseMapper<User> getMapper() {

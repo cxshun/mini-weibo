@@ -16,7 +16,7 @@ import java.util.function.Function;
  * @date 2020/8/25
  **/
 @Component
-public class JwtServiceImpl {
+public class JwtService {
     /**
      * 过期时间
      */
@@ -30,9 +30,10 @@ public class JwtServiceImpl {
      * @param userDetails   userDetails
      * @return  jwt token
      */
-    private String generateToken(UserDetails userDetails) {
+    public String generateToken(UserDetails userDetails) {
         return Jwts.builder()
                 .setClaims(new HashMap<>(0))
+                .setSubject(userDetails.getUsername())
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRE_IN_MILLIS))
                 .setIssuedAt(new Date())
                 .signWith(SignatureAlgorithm.HS512, secret)
@@ -44,7 +45,7 @@ public class JwtServiceImpl {
      * @param token jwt token
      * @return username
      */
-    private String getUserNameFromToken(String token) {
+    public String getUserNameFromToken(String token) {
         return doGetClaimsFromToken(token, Claims::getSubject);
     }
 
