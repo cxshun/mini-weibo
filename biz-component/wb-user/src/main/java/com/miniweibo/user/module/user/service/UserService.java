@@ -1,8 +1,8 @@
-package com.miniweibo.user.service;
+package com.miniweibo.user.module.user.service;
 
 import com.miniweibo.common.service.BaseService;
-import com.miniweibo.user.bo.UserInfoBo;
-import com.miniweibo.user.entity.User;
+import com.miniweibo.user.module.user.bo.UserInfoBo;
+import com.miniweibo.user.module.user.entity.User;
 
 /**
  * @author nicolas.chan

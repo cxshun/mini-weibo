@@ -1,16 +1,15 @@
-package com.miniweibo.user.service.impl;
+package com.miniweibo.user.module.user.service.impl;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.miniweibo.common.constant.CommonConstant;
 import com.miniweibo.common.service.AbstractServiceImpl;
-import com.miniweibo.user.bo.UserInfoBo;
-import com.miniweibo.user.dao.UserMapper;
-import com.miniweibo.user.entity.User;
-import com.miniweibo.user.service.UserService;
+import com.miniweibo.user.module.user.bo.UserInfoBo;
+import com.miniweibo.user.module.user.dao.UserMapper;
+import com.miniweibo.user.module.user.entity.User;
+import com.miniweibo.user.module.user.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;

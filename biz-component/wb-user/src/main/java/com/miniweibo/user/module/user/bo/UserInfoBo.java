@@ -1,4 +1,4 @@
-package com.miniweibo.user.bo;
+package com.miniweibo.user.module.user.bo;
 
 import lombok.Data;
 import lombok.experimental.Accessors;

@@ -1,4 +1,4 @@
-package com.miniweibo.user.service.impl;
+package com.miniweibo.user.module.user.service.impl;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -50,8 +50,17 @@ public class JwtService {
     }
 
     private <T> T doGetClaimsFromToken(String token, Function<Claims, T> tFunction) {
-        Claims claims = Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
+        Claims claims = getClaims(token);
         return tFunction.apply(claims);
+    }
+
+    /**
+     * get claims from token
+     * @param token jwt token
+     * @return claims
+     */
+    public Claims getClaims(String token) {
+        return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
     }
 
 }

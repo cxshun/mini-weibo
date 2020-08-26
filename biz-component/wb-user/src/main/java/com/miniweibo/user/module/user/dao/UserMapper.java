@@ -1,7 +1,7 @@
-package com.miniweibo.user.dao;
+package com.miniweibo.user.module.user.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.miniweibo.user.entity.User;
+import com.miniweibo.user.module.user.entity.User;
 import org.springframework.stereotype.Repository;
 
 /**

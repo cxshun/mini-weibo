@@ -1,4 +1,4 @@
-package com.miniweibo.user.entity;
+package com.miniweibo.user.module.user.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
