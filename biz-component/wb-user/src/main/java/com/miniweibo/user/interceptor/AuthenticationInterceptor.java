@@ -33,6 +33,10 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
             log.info("request:[{}], body:[{}]", request.getRequestURL().toString(), body);
         }
 
+        if (!(handler instanceof HandlerMethod)) {
+            return true;
+        }
+
         HandlerMethod handlerMethod = (HandlerMethod)handler;
         if (handlerMethod.hasMethodAnnotation(ValidateAuth.class)) {
             ValidateAuth validateAuth = handlerMethod.getMethodAnnotation(ValidateAuth.class);

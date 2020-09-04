@@ -25,7 +25,7 @@ public class RepeatedRequestWrapper extends HttpServletRequestWrapper {
     public RepeatedRequestWrapper(HttpServletRequest request) throws IOException {
         super(request);
         InputStream is = request.getInputStream();
-        this.body = StreamUtils.copyToString(request.getInputStream(), Charset.defaultCharset());
+        this.body = StreamUtils.copyToString(is, Charset.defaultCharset());
     }
 
     @Override
