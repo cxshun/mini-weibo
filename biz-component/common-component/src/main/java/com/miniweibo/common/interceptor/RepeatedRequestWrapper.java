@@ -1,6 +1,5 @@
 package com.miniweibo.common.interceptor;
 
-import org.springframework.stereotype.Component;
 import org.springframework.util.StreamUtils;
 
 import javax.servlet.ReadListener;
@@ -17,7 +16,6 @@ import java.nio.charset.Charset;
  * @author xiaoshun.cxs
  * @date 2020/8/25
  **/
-@Component
 public class RepeatedRequestWrapper extends HttpServletRequestWrapper {
 
     private String body;

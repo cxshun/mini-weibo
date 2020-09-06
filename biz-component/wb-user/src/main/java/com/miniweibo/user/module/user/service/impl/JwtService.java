@@ -1,9 +1,10 @@
 package com.miniweibo.user.module.user.service.impl;
 
+import com.miniweibo.user.config.JwtConfig;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
@@ -17,13 +18,8 @@ import java.util.function.Function;
  **/
 @Component
 public class JwtService {
-    /**
-     * 过期时间
-     */
-    private static final Long EXPIRE_IN_MILLIS = 5 * 60 * 60 * 1000L;
-
-    @Value("${jwt.secret}")
-    private String secret;
+    @Autowired
+    private JwtConfig jwtConfig;
 
     /**
      * generate jwt token
@@ -34,9 +30,9 @@ public class JwtService {
         return Jwts.builder()
                 .setClaims(new HashMap<>(0))
                 .setSubject(userDetails.getUsername())
-                .setExpiration(new Date(System.currentTimeMillis() + EXPIRE_IN_MILLIS))
+                .setExpiration(new Date(System.currentTimeMillis() + jwtConfig.getExpire() * 1000L))
                 .setIssuedAt(new Date())
-                .signWith(SignatureAlgorithm.HS512, secret)
+                .signWith(SignatureAlgorithm.HS512, jwtConfig.getSecret())
                 .compact();
     }
 
@@ -60,7 +56,28 @@ public class JwtService {
      * @return claims
      */
     public Claims getClaims(String token) {
-        return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
+        return Jwts.parser().setSigningKey(jwtConfig.getSecret()).parseClaimsJws(token).getBody();
+    }
+
+    /**
+     * check if token is expire
+     * @param token current token
+     * @return  true-available, false-expired
+     */
+    private boolean isTokenExpired(String token) {
+        final Date expiration = doGetClaimsFromToken(token, Claims::getExpiration);
+        return expiration.after(new Date());
+    }
+
+    /**
+     * check if token is valid
+     * @param token token
+     * @param userDetails   userdetails
+     * @return true-valid, false-not
+     */
+    public boolean isValid(String token, UserDetails userDetails) {
+        String username = doGetClaimsFromToken(token, Claims::getSubject);
+        return username.equals(userDetails.getUsername()) && !isTokenExpired(token);
     }
 
 }

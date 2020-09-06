@@ -1,5 +1,6 @@
 package com.miniweibo.user.module.user.service;
 
+import com.miniweibo.common.exception.BizException;
 import com.miniweibo.common.service.BaseService;
 import com.miniweibo.user.module.user.bo.UserInfoBo;
 import com.miniweibo.user.module.user.entity.User;
@@ -19,10 +20,10 @@ public interface UserService extends BaseService<User, Long> {
 
     /**
      * generate jwt for user
-     * @param uid   user id
-     * @param password user password
+     * @param loginId   user login id
      * @return  jwt
+     * @throws BizException can not find the specify user
      */
-    String authenticate(Long uid, String password);
+    User getByLoginId(String loginId) throws BizException;
 
 }

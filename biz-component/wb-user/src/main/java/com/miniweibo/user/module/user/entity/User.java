@@ -24,7 +24,7 @@ public class User {
     /**
      * 用户名
      */
-    private String name;
+    private String loginId;
     /**
      * 用户昵称
      */
@@ -34,13 +34,17 @@ public class User {
      */
     private String password;
     /**
+     * 用户角色
+     */
+    private String role;
+    /**
      * 邮箱
      */
     private String email;
     /**
-     * 性别，0-女，1-男，2-未知
+     * 用户头像
      */
-    private Integer sex;
+    private String logoUrl;
     /**
      * 创建时间
      */

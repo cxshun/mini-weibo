@@ -1,7 +1,10 @@
 package com.miniweibo.user.module.user.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.miniweibo.common.constant.CommonConstant;
+import com.miniweibo.common.constant.MessageCode;
+import com.miniweibo.common.exception.BizException;
 import com.miniweibo.common.service.AbstractServiceImpl;
 import com.miniweibo.user.module.user.bo.UserInfoBo;
 import com.miniweibo.user.module.user.dao.UserMapper;
@@ -11,8 +14,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author nicolas.chan
@@ -23,8 +28,6 @@ import java.util.Date;
 public class UserServiceImpl extends AbstractServiceImpl<User, Long> implements UserService {
     @Autowired
     private UserMapper userMapper;
-    @Autowired
-    private JwtService jwtService;
 
     @Override
     protected BaseMapper<User> getMapper() {
@@ -49,7 +52,15 @@ public class UserServiceImpl extends AbstractServiceImpl<User, Long> implements 
     }
 
     @Override
-    public String authenticate(Long uid, String password) {
-        return "";
+    public User getByLoginId(String loginId) throws BizException {
+        QueryWrapper<User> wrapper = new QueryWrapper<>();
+        wrapper.eq("login_id", loginId);
+
+        List<User> userList = userMapper.selectList(wrapper);
+        if (CollectionUtils.isEmpty(userList)) {
+            throw new BizException(MessageCode.CUSTOM_ERROR, "login failed");
+        }
+
+        return userList.get(0);
     }
 }
