@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @date 2020/8/25
  **/
 @Component
-public class InterceptorConfigurer implements WebMvcConfigurer {
+public class CommonInterceptorConfigurer implements WebMvcConfigurer {
     @Autowired
     private RepeatedRequestInterceptor repeatedRequestInterceptor;
 

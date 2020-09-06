@@ -50,6 +50,6 @@ public class UserServiceImpl extends AbstractServiceImpl<User, Long> implements 
 
     @Override
     public String authenticate(Long uid, String password) {
-        return false;
+        return "";
     }
 }
