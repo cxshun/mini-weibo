@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
  * 2020/9/6
  */
 @Service
-public class JwtUserDetailService implements UserDetailsService {
+public class JwtUserDetailServiceImpl implements UserDetailsService {
     @Autowired
     private UserService userService;
 

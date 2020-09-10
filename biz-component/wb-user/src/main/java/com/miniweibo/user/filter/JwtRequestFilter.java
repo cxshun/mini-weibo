@@ -1,14 +1,12 @@
 package com.miniweibo.user.filter;
 
 import com.miniweibo.user.module.user.service.impl.JwtService;
-import com.miniweibo.user.module.user.service.impl.JwtUserDetailService;
+import com.miniweibo.user.module.user.service.impl.JwtUserDetailServiceImpl;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -26,7 +24,7 @@ import java.io.IOException;
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter{
     @Autowired
-    private JwtUserDetailService jwtUserDetailService;
+    private JwtUserDetailServiceImpl jwtUserDetailService;
     @Autowired
     private JwtService jwtService;
 

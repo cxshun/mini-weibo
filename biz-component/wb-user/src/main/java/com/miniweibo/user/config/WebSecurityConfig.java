@@ -2,7 +2,7 @@ package com.miniweibo.user.config;
 
 import com.miniweibo.user.filter.JwtAuthenticationEntryPoint;
 import com.miniweibo.user.filter.JwtRequestFilter;
-import com.miniweibo.user.module.user.service.impl.JwtUserDetailService;
+import com.miniweibo.user.module.user.service.impl.JwtUserDetailServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -30,7 +30,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
     @Autowired
-    private JwtUserDetailService jwtDetailUserService;
+    private JwtUserDetailServiceImpl jwtDetailUserService;
     @Autowired
     private JwtRequestFilter jwtRequestFilter;
 

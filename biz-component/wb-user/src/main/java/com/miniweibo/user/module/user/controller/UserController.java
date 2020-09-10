@@ -3,7 +3,7 @@ package com.miniweibo.user.module.user.controller;
 import com.miniweibo.user.module.user.controller.dto.LoginReq;
 import com.miniweibo.user.module.user.controller.dto.LoginResp;
 import com.miniweibo.user.module.user.service.impl.JwtService;
-import com.miniweibo.user.module.user.service.impl.JwtUserDetailService;
+import com.miniweibo.user.module.user.service.impl.JwtUserDetailServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("user")
 public class UserController {
     @Autowired
-    private JwtUserDetailService jwtUserDetailService;
+    private JwtUserDetailServiceImpl jwtUserDetailService;
     @Autowired
     private JwtService jwtService;
     @Autowired

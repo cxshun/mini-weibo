@@ -13,6 +13,7 @@
 
     <modules>
         <module>eureka-server-1</module>
+        <module>admin-server</module>
     </modules>
 
 </project>
